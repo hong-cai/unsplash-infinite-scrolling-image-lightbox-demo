@@ -60,7 +60,7 @@ return (
               title= { image.alt_description }
               subtitle={<span>by: {image.user.name}</span>}
               actionIcon={
-                <IconButton aria-label={`info about ${image.alt_description}`} className={classes.icon} href={image.urls.full}>
+                <IconButton aria-label={`info about ${image.alt_description}`} className={classes.icon} href={image.urls.regular}>
                   <CloudDownloadIcon />
                 </IconButton>
               }
