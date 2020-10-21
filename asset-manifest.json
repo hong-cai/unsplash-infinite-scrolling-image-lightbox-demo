@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/main.f42f7cc6.chunk.js",
-    "main.js.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/main.f42f7cc6.chunk.js.map",
+    "main.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/main.a6273616.chunk.js",
+    "main.js.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/main.a6273616.chunk.js.map",
     "runtime-main.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/runtime-main.308ca769.js",
     "runtime-main.js.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/runtime-main.308ca769.js.map",
-    "static/js/2.78a6c9fc.chunk.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.78a6c9fc.chunk.js",
-    "static/js/2.78a6c9fc.chunk.js.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.78a6c9fc.chunk.js.map",
+    "static/css/2.9522b9fe.chunk.css": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/css/2.9522b9fe.chunk.css",
+    "static/js/2.d164e252.chunk.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.d164e252.chunk.js",
+    "static/js/2.d164e252.chunk.js.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.d164e252.chunk.js.map",
     "index.html": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/index.html",
-    "precache-manifest.19bb41d3541058fa15a1aef3d5d0b9ff.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/precache-manifest.19bb41d3541058fa15a1aef3d5d0b9ff.js",
+    "precache-manifest.33466e2d72083cbb09bb38e9dd553e1a.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/precache-manifest.33466e2d72083cbb09bb38e9dd553e1a.js",
     "service-worker.js": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/service-worker.js",
-    "static/js/2.78a6c9fc.chunk.js.LICENSE.txt": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.78a6c9fc.chunk.js.LICENSE.txt",
+    "static/css/2.9522b9fe.chunk.css.map": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/css/2.9522b9fe.chunk.css.map",
+    "static/js/2.d164e252.chunk.js.LICENSE.txt": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/js/2.d164e252.chunk.js.LICENSE.txt",
     "static/media/tekapo3.jpg": "/unsplashAPI-infinite-scrolling-image-lightbox-demo/static/media/tekapo3.049d3172.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.308ca769.js",
-    "static/js/2.78a6c9fc.chunk.js",
-    "static/js/main.f42f7cc6.chunk.js"
+    "static/css/2.9522b9fe.chunk.css",
+    "static/js/2.d164e252.chunk.js",
+    "static/js/main.a6273616.chunk.js"
   ]
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/unsplashAPI-infinite-scrolling-image-lightbox-demo/precache-manifest.19bb41d3541058fa15a1aef3d5d0b9ff.js"
+  "/unsplashAPI-infinite-scrolling-image-lightbox-demo/precache-manifest.33466e2d72083cbb09bb38e9dd553e1a.js"
 );
 
 self.addEventListener('message', (event) => {
