@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Test Unsplash API For Photo Search Application
 
-## Available Scripts
+### Created with
 
-In the project directory, you can run:
+- React JS - functional components
+- React Hooks (useState,useContext,useRef...)
+- Unsplash.js
+- Material UI
+- Axios
+- InteresectionObserver API
+- React Unlimited Scrolling Component
+- React Image Lightbox
+  
 
-### `yarn start`
+Demo: [https://hong-cai.github.io/](https://hong-cai.github.io/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Main functionality and targets at the moment:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ - Initial stage: use Unsplash API to fetch images by keywords 
+ - Image Unlimited scrolling with InteresectionObserver API or React Unlimited Scrolling Component
+ - Image Lightbox for browsing large images
+ - Redirecting to the photogragher's profile page *
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Workflow:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Create react project:
+   1. `npx create-react-app demo-unsplash`
+   2. `git init` (create repo, commit, remote, create and push branch)
+   3. Github (create repo, connect to local repo, pull request and merge)
+   4. Deployment (Github Pages)
+2. Understand how Unsplash API works:
+    1.Register on https://unsplash.com/oauth/ and request Unsplash API credentials
+    2. `npm install unsplash-js`
+    create instance of Unslash:
+    `const unsplash = new Unsplash({
+    accessKey: "Access_Key",
+    });`
+    3.use search method `search.photos(keyword, page, per_page, filters)`to get images
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3.Change to Axios for further implimentation when Unsplash.js is not in use
+4. Use Material UI for main display purpose
+5. * A test of Image Lightbox( Meet challenges in data sharing between functional components)
+6. * Testing InteresectionObserver API in images unlimited scrolling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+   

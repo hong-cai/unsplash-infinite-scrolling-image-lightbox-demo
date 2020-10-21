@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import SearchInput from './components/SearchInput';
+import{BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import PhotoLightbox from './components/PhotoLightbox';
+import TestScroll from './components/TestScroll';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container maxWidth="md">
+        <h1 className="title">New Zealand Photo Album</h1>
+        <SearchInput />
+        <TestScroll />
+        <PhotoLightbox />
+      </Container>
     </div>
+    </Router>
   );
 }
 
