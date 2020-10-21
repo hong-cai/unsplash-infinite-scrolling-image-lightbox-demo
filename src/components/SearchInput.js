@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Unsplash, { toJson } from "unsplash-js";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import PhotoLightbox from './PhotoLightbox';
 import ImagesGrid from './ImagesGrid';
 
 //Grid Style for the home page main container
@@ -23,6 +22,8 @@ import { faFacebook,faTwitter,faGooglePlus } from '@fortawesome/free-brands-svg-
 import {ImageContext} from '../ImageContext';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+
+import Loading from './Loading';
 
 
 
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-// At this stage use unslpash.js, so make an instance of Unsplash
+//make an instance of Unsplash
 const unsplash = new Unsplash({
     accessKey: "5OUK6ToN68rS7YXWjPhBhvqeo_Tf5qP5Pe-mANWZs_c",
 });
@@ -67,52 +68,57 @@ const SearchInput = () => {
     const [pageNum,setPageNum]=useState(1);
     const [images, setImages] = useState([]);
     const [error,setError]=useState(false);
-    const [hasMore,setHasMore]=useState(true);
-    const [value,setValue]=useState('test context value');
     const [loading, setIsloading] = React.useState(false);
-    const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     const classes = useStyles();
 
+    //Watch pageNum change and update with new images
     useEffect(() => {
-    urlToGetImages(10);
-  }, []);
+        findImages();
+  }, [pageNum]);
 
+  const updateResult=(e)=>{
+    e.preventDefault();
+    setPageNum(1);
+    findImages();
+  }
 
-    //Send keywords to find images
-    const findImages = async(e) => {
-        const qString = query.replace(/\s/g, '-').toLowerCase();
-        e.preventDefault();
-        unsplash.search.photos(qString,1, 10)
+  const findImages = ()=>{
+        unsplash.search.photos(query,pageNum, 10)
             .then(toJson)
-            .then(json => {setImages([...json.results])});
-    }
+            .then(json => {
+        if (pageNum === 1) {setImages(json.results);}
+        else{          
+        setImages((images) => [...images, ...json.results]);
+        }
+                });
 
-    /*THIS IS THE MAIN FUNCTION TO CALL API INCASE Unsplash IS NOT USED IN FUTURE */
-    const urlToGetImages = (oneCount = 10) => {
-        //Maybe 'api.domain.com'
+  }
+
+
+//Will switch to Axios instead of Unsplash
+  const urlToGetImages = (oneCount = 10) => {
         const urlBase = "https://api.unsplash.com";
         const string = query.replace(/\s/g, '-').toLowerCase();
         const accessKey = "5OUK6ToN68rS7YXWjPhBhvqeo_Tf5qP5Pe-mANWZs_c";
         setIsloading(true);
         setError(false);
-        let cancel;
         axios({
             method:'GET',
             url:`${urlBase}/search/photos?query=${string}&page=${pageNum}&client_id=${accessKey}&count=${oneCount}`,
-            params:{query:string,page:pageNum,client_id:accessKey,count:oneCount},
-            cancelToken: new axios.CancelToken(c=>cancel=c)
+            // params:{query:string,page:pageNum,client_id:accessKey,count:oneCount},
         })
-        .then(res =>{setImages([...images,...res.data.results]);
-                    setIsloading(false);})
+        .then(res =>{
+            setImages([...images,...res.data.results]);
+            console.log(images);
+            //         setIsloading(false);
+            //         setPageNum(page=>page+1);
+                })
         .catch(e=>{
-            if(axios.isCancel(e)) return;
+            // if(axios.isCancel(e)) return;
             setError(true);
         })
-        // return ()=>cancel();
-
-           
+        // return ()=>cancel();           
     };
-
 
 
 
@@ -122,11 +128,11 @@ const SearchInput = () => {
     <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={12}>
-              <Card className={classes[cardAnimaton]}>
+              <Card>
                   <CardHeader color="primary" className={classes.cardHeader}>
                   <form noValidate autoComplete="off"
-        onSubmit = { findImages } >
-        <TextField name = "query" id="outlined-basic" variant="outlined" placeholder = { `Try "Taupo" or "Waterfall New Zealand" ` } onChange = { e => setquery(e.target.value) }/>
+        onSubmit = { updateResult  } >
+        <TextField name = "query" id="outlined-basic" variant="outlined" placeholder = { `Try "Taupo" or "Waterfall New Zealand" ` } value={query} onChange = { e => setquery(e.target.value) }/>
         <Button 
         type = "submit"
         variant = "contained"
@@ -160,18 +166,21 @@ const SearchInput = () => {
                         <FontAwesomeIcon icon={faGooglePlus} />
                       </Button>
     </form> 
-
                   </CardHeader>
- 
-                  <CardBody>
-                  {/* <ImageContext.Provider images={images} loading={loading}> */}
+                   <CardBody>
+                  <InfiniteScroll
+        dataLength={images.length}
+        next={() => setPageNum((page) => page + 1)}
+        // next={urlToGetImages}
+        hasMore={true}
+        loader={<Loading />}
+      >
     <ImagesGrid images={images} loading={loading}   />
-    {/* </ImageContext.Provider>   */}
+   </InfiniteScroll>
                   </CardBody>
               </Card>
             </GridItem>
           </GridContainer>
-
         </div>
     </div>
     )

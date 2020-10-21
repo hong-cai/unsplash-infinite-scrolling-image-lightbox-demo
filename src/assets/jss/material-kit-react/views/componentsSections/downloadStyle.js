@@ -1,9 +1,9 @@
-import { container } from "assets/jss/material-kit-react.js";
+import { container } from "../../../material-kit-react";
 
 const downloadStyle = {
-  section: {
-    padding: "70px 0"
-  },
+  // section: {
+  //   padding: "70px 0"
+  // },
   container,
   textCenter: {
     textAlign: "center"
